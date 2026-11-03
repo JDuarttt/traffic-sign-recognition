@@ -56,3 +56,10 @@ def check_split(df):
     print("")
     print("5 least common classes in Validation set:")
     print(tracks.sort_values("val").head(5))
+
+def split_dataframe(df):
+    TrainDF = df[df["split"] == "train"]
+    TrainDF.reset_index(drop=True)
+    ValDF = df[df["split"] == "val"]
+    ValDF.reset_index(drop=True)
+    return TrainDF, ValDF
