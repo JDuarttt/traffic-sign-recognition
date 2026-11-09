@@ -2,6 +2,8 @@ from pathlib import Path
 import pandas as pd
 from sklearn.model_selection import StratifiedGroupKFold
 import numpy as np
+import random
+import torch
 
 def build_index(train_dir):
     files = sorted(train_dir.rglob("*.png"))
@@ -63,3 +65,8 @@ def split_dataframe(df):
     ValDF = df[df["split"] == "val"]
     ValDF.reset_index(drop=True)
     return TrainDF, ValDF
+
+def set_seed(seed=42):
+    random.seed = seed
+    np.random = seed
+    torch.manual_seed(seed)
